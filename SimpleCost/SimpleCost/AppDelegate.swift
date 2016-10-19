@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  SimpleCost
 //
-//  Created by J on 2016/10/12.
-//  Copyright © 2016年 J. All rights reserved.
+//  Created by joe on 2016/10/12.
+//  Copyright © 2016年 joe. All rights reserved.
 //
 
 import UIKit
@@ -15,15 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        window = UIWindow(frame: UIScreen.main.bounds)
-        //
+        //1.初始化window
+        window = UIWindow(frame: kScreenBounds)
+        //2.设置window的背景色
         window?.backgroundColor = UIColor.white
-        //
-        window?.rootViewController = MainNavigationController(rootViewController: HomeViewController(nibName: "HomeViewController", bundle: nil))
-        //
+        //3.设置root view controller
+        window?.rootViewController = MainNavigationController(rootViewController: HomeViewController())
+        //4.现实window
         window?.makeKeyAndVisible()
-        
         return true
     }
 

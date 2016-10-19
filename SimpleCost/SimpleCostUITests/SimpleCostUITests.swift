@@ -2,8 +2,8 @@
 //  SimpleCostUITests.swift
 //  SimpleCostUITests
 //
-//  Created by J on 2016/10/12.
-//  Copyright © 2016年 J. All rights reserved.
+//  Created by joe on 2016/10/12.
+//  Copyright © 2016年 joe. All rights reserved.
 //
 
 import XCTest

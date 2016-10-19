@@ -1,5 +1,5 @@
 //
-//  MonthViewController.swift
+//  AddViewController.swift
 //  SimpleCost
 //
 //  Created by joe on 2016/10/19.
@@ -8,11 +8,14 @@
 
 import UIKit
 
-class MonthViewController: BaseViewController {
+class AddViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "月份"
+        
+    }
+    @IBAction func closeBtnAction(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
 }
