@@ -9,7 +9,7 @@
 import UIKit
 
 private let identifier = "HomeCell"
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController, AddViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,7 +22,13 @@ class HomeViewController: BaseViewController {
     }
     
     func rightDown() {
-        present(AddViewController(), animated: true, completion: nil)
+        let vc = AddViewController()
+        vc.delegate = self
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func finishAddData() {
+        
     }
 }
 
@@ -35,12 +41,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         var cell = tableView.dequeueReusableCell(withIdentifier: identifier)
         
         if  cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: identifier)
-            cell?.contentView.backgroundColor = UIColor.clear
+            cell = Bundle.main.loadNibNamed(identifier, owner: self, options: nil)?.last as! HomeCell
             cell?.backgroundColor = UIColor.clear
         }
-        cell?.detailTextLabel?.text = "这是第\(indexPath.row)行"
-        cell?.detailTextLabel?.textColor = UIColor.white
         return cell!
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 }
