@@ -28,8 +28,28 @@ class HomeViewController: BaseViewController, AddViewControllerDelegate {
     }
     
     func finishAddData() {
-        
+        let date = NSDate().timeIntervalSince1970
+        let tmpDay = Int(date / 60 / 60 / 24)
+        print("day = \(tmpDay)")
+        print(timeStampToString(timeStamp: "\(date)"))
     }
+    func timeStampToString(timeStamp:String)->String {
+        
+        let string = NSString(string: timeStamp)
+        
+        let timeSta:TimeInterval = string.doubleValue
+        let dfmatter = DateFormatter()
+        dfmatter.dateFormat="yyyy.MM.dd"
+        
+        let date = NSDate(timeIntervalSince1970: timeSta)
+        
+        return dfmatter.string(from: date as Date)
+    }
+    
+    private lazy var modelArray: [HomeModel] = {
+        let array = HomeModel.modelArray()
+        return array
+    }()
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
