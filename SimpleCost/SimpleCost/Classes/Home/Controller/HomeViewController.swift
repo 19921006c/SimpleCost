@@ -8,14 +8,16 @@
 
 import UIKit
 
-private let identifier = "HomeCell"
 class HomeViewController: BaseViewController, AddViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    var modelArray: [HomeModel]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        modelArray = HomeModel.modelArray()
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(rightDown))
         
         title = "首页"
@@ -27,13 +29,39 @@ class HomeViewController: BaseViewController, AddViewControllerDelegate {
         present(vc, animated: true, completion: nil)
     }
     
-    func finishAddData() {
-        let date = NSDate().timeIntervalSince1970
-        let tmpDay = Int(date / 60 / 60 / 24)
-        print("day = \(tmpDay)")
-        print(timeStampToString(timeStamp: "\(date)"))
+    //添加数据页点击确定后的回调
+    func finishAddData(costModel: CostModel) {
+        let timestamp = NSDate().timeIntervalSince1970
+        let orderNumber = Int(timestamp / 60 / 60 / 24)
+        print("day = \(orderNumber)")
+        print(timeStampToString(timeStamp: "\(timestamp)"))
+        
+        var model = modelArray?.last
+        if model == nil {//没有数据
+            model = createNewDayData(orderNumber: orderNumber, timestamp: timestamp)
+            modelArray?.append(model!)
+        }else{//有数据
+            if model?.orderNumber == orderNumber {//最后数据就是今天
+            }else{//最后数据不是今天
+                model = createNewDayData(orderNumber: orderNumber, timestamp: timestamp)
+            }
+        }
+        model?.costModelArray.insert(costModel, at: 0)
+        
+        saveData()
     }
-    func timeStampToString(timeStamp:String)->String {
+    //将数据缓存起来
+    private func saveData(){
+        NSKeyedArchiver.archiveRootObject(modelArray, toFile: kHomePath)
+    }
+    //创建一条新的数据
+    private func createNewDayData(orderNumber: Int, timestamp: Double) -> HomeModel{
+        let model = HomeModel()
+        model.timestamp = timestamp
+        model.orderNumber = orderNumber
+        return model
+    }
+    private func timeStampToString(timeStamp: String)->String {
         
         let string = NSString(string: timeStamp)
         
@@ -46,25 +74,22 @@ class HomeViewController: BaseViewController, AddViewControllerDelegate {
         return dfmatter.string(from: date as Date)
     }
     
-    private lazy var modelArray: [HomeModel] = {
-        let array = HomeModel.modelArray()
-        return array
-    }()
+//    private lazy var modelArray: [HomeModel] = {
+//        let array = HomeModel.modelArray()
+//        return array
+//    }()
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return modelArray!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: identifier)
-        
-        if  cell == nil {
-            cell = Bundle.main.loadNibNamed(identifier, owner: self, options: nil)?.last as! HomeCell
-            cell?.backgroundColor = UIColor.clear
-        }
-        return cell!
+        let cell = HomeCell.cellWithTableView(tableView: tableView)
+        let model = modelArray?[indexPath.row]
+        cell.model = model
+        return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80

@@ -7,8 +7,10 @@
 //
 
 import UIKit
-
+private let identifier = "HomeCell"
 class HomeCell: UITableViewCell {
+    
+    var model: HomeModel?
 
     @IBOutlet weak var label: UILabel!
     
@@ -18,10 +20,13 @@ class HomeCell: UITableViewCell {
         label.textColor = UIColor.white
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    class func cellWithTableView(tableView: UITableView) -> HomeCell{
+        var cell = tableView.dequeueReusableCell(withIdentifier: identifier)
+        
+        if cell == nil {
+            cell = Bundle.main.loadNibNamed(identifier, owner: self, options: nil)?.last as? UITableViewCell
+        }
+        return cell! as! HomeCell
     }
     
 }

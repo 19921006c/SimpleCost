@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AddViewControllerDelegate: NSObjectProtocol {
-    func finishAddData()
+    func finishAddData(costModel: CostModel)
 }
 private let identifier = "AddViewControllerCollectionCell"
 class AddViewController: BaseViewController {
@@ -90,7 +90,9 @@ extension AddViewController: UICollectionViewDelegate, UICollectionViewDataSourc
                 recordLabel.text = ""
                 label.text = "\(resultNum)"
                 if item == 3 {
-                    self.delegate?.finishAddData()
+                    let model = CostModel()
+                    model.value = resultNum
+                    self.delegate?.finishAddData(costModel: model)
                     dismiss(animated: true, completion: nil)
                     return
                 }
