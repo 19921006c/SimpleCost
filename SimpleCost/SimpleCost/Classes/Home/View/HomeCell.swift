@@ -10,7 +10,11 @@ import UIKit
 private let identifier = "HomeCell"
 class HomeCell: UITableViewCell {
     
-    var model: HomeModel?
+    var model: CostModel?{
+        didSet{
+            label.text = "\((model?.title)!) \((model?.value)!)"
+        }
+    }
 
     @IBOutlet weak var label: UILabel!
     

@@ -44,7 +44,6 @@ class AddViewController: BaseViewController {
         layout.minimumInteritemSpacing = 0.5
         collectionView.collectionViewLayout = layout
         
-        
     }
     @IBAction func closeBtnAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)

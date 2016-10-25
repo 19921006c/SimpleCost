@@ -29,6 +29,8 @@
 		D85EC4BD1DB765D700B97A50 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D85EC4BB1DB765D700B97A50 /* AddViewController.xib */; };
 		D87824A21DBDFC0100D47A90 /* CostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87824A01DBDFC0100D47A90 /* CostModel.swift */; };
 		D87824A31DBDFC0100D47A90 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87824A11DBDFC0100D47A90 /* HomeModel.swift */; };
+		D89653C71DBF38DE0081B4ED /* HomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89653C51DBF38DE0081B4ED /* HomeHeaderCell.swift */; };
+		D89653C81DBF38DE0081B4ED /* HomeHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89653C61DBF38DE0081B4ED /* HomeHeaderCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		D85EC4BB1DB765D700B97A50 /* AddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
 		D87824A01DBDFC0100D47A90 /* CostModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CostModel.swift; sourceTree = "<group>"; };
 		D87824A11DBDFC0100D47A90 /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		D89653C51DBF38DE0081B4ED /* HomeHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderCell.swift; sourceTree = "<group>"; };
+		D89653C61DBF38DE0081B4ED /* HomeHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeHeaderCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +262,8 @@
 			children = (
 				D835DAD41DB8C9DE00AEB2A5 /* HomeCell.swift */,
 				D835DAD51DB8C9DE00AEB2A5 /* HomeCell.xib */,
+				D89653C51DBF38DE0081B4ED /* HomeHeaderCell.swift */,
+				D89653C61DBF38DE0081B4ED /* HomeHeaderCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 				D835DACF1DB88AFE00AEB2A5 /* AddViewControllerCollectionCell.xib in Resources */,
 				D848C6F21DAE858D00A804A9 /* LaunchScreen.storyboard in Resources */,
 				D85EC4B41DB7515A00B97A50 /* MonthViewController.xib in Resources */,
+				D89653C81DBF38DE0081B4ED /* HomeHeaderCell.xib in Resources */,
 				D85EC4BD1DB765D700B97A50 /* AddViewController.xib in Resources */,
 				D848C6EF1DAE858D00A804A9 /* Assets.xcassets in Resources */,
 				D835DAD71DB8C9DE00AEB2A5 /* HomeCell.xib in Resources */,
@@ -474,6 +481,7 @@
 				D85EC4BC1DB765D700B97A50 /* AddViewController.swift in Sources */,
 				D85EC4AC1DB7509800B97A50 /* BaseViewController.swift in Sources */,
 				D835DAD61DB8C9DE00AEB2A5 /* HomeCell.swift in Sources */,
+				D89653C71DBF38DE0081B4ED /* HomeHeaderCell.swift in Sources */,
 				D835DACE1DB88AFE00AEB2A5 /* AddViewControllerCollectionCell.swift in Sources */,
 				D85EC4AA1DB74FD200B97A50 /* CommonTool.swift in Sources */,
 				D848C6E81DAE858D00A804A9 /* AppDelegate.swift in Sources */,

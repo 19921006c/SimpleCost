@@ -25,12 +25,34 @@ class HomeModel: NSObject,NSCoding {
     var costModelArray = [CostModel]()
     
     class func modelArray() -> [HomeModel]{
-        var array = NSKeyedUnarchiver.unarchiveObject(withFile: kHomePath)
-        
+        var array = NSKeyedUnarchiver.unarchiveObject(withFile: kHomePath) as? [HomeModel]
         if array == nil {
             array = [HomeModel]()
+            let model = HomeModel.createNewDayData()
+            array?.append(model)
+            NSKeyedArchiver.archiveRootObject(array!, toFile: kHomePath)
+        }else{
+            let model = array!.last
+            if !CommonTool.isToDay(oldTimestamp: (model?.timestamp)!) {//最后一条数据不是今天
+                //创建一条新数据
+                let model = HomeModel.createNewDayData()
+                array?.append(model)
+            }
         }
-        return array as! [HomeModel]
+        return array!
+    }
+    
+    //创建一条新的数据
+    class func createNewDayData() -> HomeModel{
+        let model = HomeModel()
+        let timestamp = NSDate().timeIntervalSince1970
+        let orderNumber = Int(timestamp / 60 / 60 / 24)
+        model.timestamp = timestamp
+        model.orderNumber = orderNumber
+//        let costModel = CostModel()
+//        costModel.value = 0
+//        model.costModelArray.append(costModel)
+        return model
     }
     
     func encode(with aCoder: NSCoder) {

@@ -18,12 +18,12 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pay" translatesAutoresizingMaskIntoConstraints="NO" id="18Z-UD-sc2">
                         <constraints>
-                            <constraint firstAttribute="width" constant="35" id="BTT-AZ-bmw"/>
+                            <constraint firstAttribute="width" constant="25" id="BTT-AZ-bmw"/>
                             <constraint firstAttribute="width" secondItem="18Z-UD-sc2" secondAttribute="height" multiplier="1:1" id="XBJ-rL-0G3"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60f-vI-RMX">
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -35,6 +35,7 @@
                     <constraint firstItem="18Z-UD-sc2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yDk-9H-JKd"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="label" destination="60f-vI-RMX" id="iDN-dP-c34"/>
             </connections>
