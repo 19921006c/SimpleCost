@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="SimpleCost" customModuleProvider="target">
             <connections>
+                <outlet property="bottomView" destination="iIs-pW-q5v" id="u8d-5V-TLh"/>
                 <outlet property="tableView" destination="2IB-S6-yPh" id="K8i-sT-YUS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -30,15 +31,43 @@
                         <outlet property="delegate" destination="-1" id="cxy-4v-Npg"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iIs-pW-q5v" userLabel="bottomView">
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="LmK-oy-OEN"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mL-9m-NoH">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6S-Ga-sEF">
+                            <color key="backgroundColor" red="0.19107788311584606" green="0.27967256633431725" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="J6S-Ga-sEF" firstAttribute="centerX" secondItem="8mL-9m-NoH" secondAttribute="centerX" id="JF8-bJ-LYG"/>
+                        <constraint firstItem="J6S-Ga-sEF" firstAttribute="centerY" secondItem="8mL-9m-NoH" secondAttribute="centerY" id="dgf-VJ-Rqj"/>
+                        <constraint firstAttribute="height" constant="60" id="nhT-AE-8or"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="2IB-S6-yPh" secondAttribute="trailing" id="0SU-kt-orY"/>
+                <constraint firstItem="iIs-pW-q5v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1oo-dX-Ud6"/>
                 <constraint firstItem="uLN-ab-n1w" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Eo9-NT-VV4"/>
                 <constraint firstItem="2IB-S6-yPh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="G9G-ry-ezD"/>
+                <constraint firstAttribute="trailing" secondItem="8mL-9m-NoH" secondAttribute="trailing" id="PYp-Gk-jO7"/>
                 <constraint firstAttribute="bottom" secondItem="uLN-ab-n1w" secondAttribute="bottom" id="SP8-Gm-a8s"/>
                 <constraint firstAttribute="bottom" secondItem="2IB-S6-yPh" secondAttribute="bottom" id="ZOd-GQ-gvS"/>
+                <constraint firstItem="iIs-pW-q5v" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="hDP-xQ-AGe"/>
+                <constraint firstAttribute="trailing" secondItem="iIs-pW-q5v" secondAttribute="trailing" id="i6W-XW-Wr5"/>
+                <constraint firstItem="8mL-9m-NoH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="i9U-wR-HFV"/>
                 <constraint firstItem="2IB-S6-yPh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lCt-ya-fIf"/>
+                <constraint firstItem="8mL-9m-NoH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="moU-rc-Uq8"/>
                 <constraint firstItem="uLN-ab-n1w" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="vPo-DN-92P"/>
             </constraints>
         </view>

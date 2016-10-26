@@ -18,15 +18,15 @@ class HomeHeaderCell: UITableViewCell {
             let timestamp = NSDate().timeIntervalSince1970
             let orderNumber = Int(timestamp / 60 / 60 / 24)
             let timeContent: String?
-            if orderNumber == model?.orderNumber {
+            if orderNumber == (model?.orderNumber)! {
                 timeContent = "今天"
-            }else if ((model?.orderNumber)! - orderNumber ) == 1{
+            }else if (orderNumber - (model?.orderNumber)! ) == 1{
                 timeContent = "昨天"
             }else{
                 timeContent = timeStampToString(timeStamp: "\(timestamp)") + "日"
             }
             timeLabel.text = timeContent!
-            var sum: Float = 0
+            var sum: Double = 0
             for costModel in (model?.costModelArray)! {
                 sum = sum + costModel.value!
             }

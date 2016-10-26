@@ -22,7 +22,7 @@
                             <constraint firstAttribute="width" constant="25" id="IeI-G0-Byo"/>
                             <constraint firstAttribute="width" secondItem="jUX-NJ-UEk" secondAttribute="height" multiplier="1:1" id="zNe-Zw-wiB"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>

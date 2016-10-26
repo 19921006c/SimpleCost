@@ -29,6 +29,7 @@ class HomeCell: UITableViewCell {
         
         if cell == nil {
             cell = Bundle.main.loadNibNamed(identifier, owner: self, options: nil)?.last as? UITableViewCell
+            cell?.selectionStyle = UITableViewCellSelectionStyle.none
         }
         return cell! as! HomeCell
     }

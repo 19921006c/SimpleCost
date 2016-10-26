@@ -36,7 +36,7 @@ class HomeModel: NSObject,NSCoding {
             if !CommonTool.isToDay(oldTimestamp: (model?.timestamp)!) {//最后一条数据不是今天
                 //创建一条新数据
                 let model = HomeModel.createNewDayData()
-                array?.append(model)
+                array?.insert(model, at: 0)
             }
         }
         return array!

@@ -10,17 +10,25 @@ import UIKit
 
 class HomeViewController: BaseViewController, AddViewControllerDelegate {
 
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var tableView: UITableView!
     var modelArray: [HomeModel]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0)
         modelArray = HomeModel.modelArray()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(rightDown))
         
         title = "首页"
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        let effectView = UIVisualEffectView(effect: blurEffect)
+        effectView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 60)
+        bottomView.addSubview(effectView)
+        effectView.alpha = 0.5
     }
     
     func rightDown() {
@@ -31,6 +39,10 @@ class HomeViewController: BaseViewController, AddViewControllerDelegate {
     
     //添加数据页点击确定后的回调
     func finishAddData(costModel: CostModel) {
+        
+        if costModel.value == 0 {
+            return
+        }
         let model = modelArray?.last
         model?.costModelArray.insert(costModel, at: 0)
         saveData()
@@ -86,5 +98,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset.y + scrollView.contentInset.top)
     }
 }

@@ -29,7 +29,7 @@ class CostModel: NSObject, NSCoding {
         }
     }
     //消费金额
-    var value: Float?
+    var value: Double?
     
     func encode(with aCoder: NSCoder) {
 //        aCoder.encode(type, forKey: kType)
@@ -39,7 +39,7 @@ class CostModel: NSObject, NSCoding {
     required init?(coder aDecoder: NSCoder) {
         super.init()
 //        aDecoder.decodeInteger(forKey: kType)
-        value = aDecoder.decodeObject(forKey: kValue) as? Float
+        value = aDecoder.decodeObject(forKey: kValue) as? Double
     }
     
     override init() {
