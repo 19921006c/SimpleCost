@@ -12,13 +12,15 @@ class HomeViewController: BaseViewController, AddViewControllerDelegate {
 
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var tableView: UITableView!
-    var modelArray: [HomeModel]!
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var sumLabel: UILabel!
+    var modelArray: [AnyObject]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0)
-        modelArray = HomeModel.modelArray()
+        modelArray = HomeDayModel.modelArryLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(rightDown))
         
@@ -29,6 +31,10 @@ class HomeViewController: BaseViewController, AddViewControllerDelegate {
         effectView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 60)
         bottomView.addSubview(effectView)
         effectView.alpha = 0.5
+        
+        monthLabel.text = "10月"
+        monthLabel.layer.cornerRadius = 30
+        monthLabel.clipsToBounds = true
     }
     
     func rightDown() {
@@ -39,15 +45,31 @@ class HomeViewController: BaseViewController, AddViewControllerDelegate {
     
     //添加数据页点击确定后的回调
     func finishAddData(costModel: CostModel) {
-        
-        if costModel.value == 0 {
-            return
+        if modelArray.count == 0{
+            //如果第一次添加则创建数据
+            modelArray = HomeDayModel.modelArryLoad()
+            //计算当天消费合计
+            let model = modelArray.first as! HomeDayModel
+            model.costSum = model.costSum! + costModel.value!
+            //当月消费合计
+            sumLabel.text = "支出\n\(model.costSum)"
+            //插入消费模型
+            modelArray.insert(costModel, at: 1)
+            //刷新
+            tableView.reloadData()
+        }else{
+            //插入消费模型
+            modelArray.insert(costModel, at: 1)
+            //计算当天消费合计
+            let model = modelArray.first as! HomeDayModel
+            model.costSum = model.costSum! + costModel.value!
+            //当月消费合计
+            sumLabel.text = "支出\n\(model.costSum)"
+            //刷新数据
+            perform(#selector(refreshTableView), with: nil, afterDelay: 0.25)
+
         }
-        let model = modelArray?.last
-        model?.costModelArray.insert(costModel, at: 0)
         saveData()
-//        tableView.reloadData()
-        perform(#selector(refreshTableView), with: nil, afterDelay: 0.25)
     }
     func refreshTableView() {
         var indexPath = IndexPath(row: 1, section: 0)
@@ -75,24 +97,23 @@ class HomeViewController: BaseViewController, AddViewControllerDelegate {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let model = modelArray[section]
-        
-        return model.costModelArray.count + 1
-    }
-    func numberOfSections(in tableView: UITableView) -> Int {
         return modelArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let headerCell = HomeHeaderCell.cellWithTableView(tableView: tableView)
-        let cell = HomeCell.cellWithTableView(tableView: tableView)
-        let model = modelArray[indexPath.section]
         let row = indexPath.row
-        if row == 0 {
-            headerCell.model = model
-            return headerCell
-        }else{
-            cell.model = model.costModelArray[row - 1]
+        let model = modelArray[row]
+
+        if model.isKind(of: CostModel.self){//消费模型
+            let cell = HomeCell.cellWithTableView(tableView: tableView)
+            cell.model = model as? CostModel
+            return cell
+        }else if model.isKind(of: HomeDayModel.self){//天
+            let cell = HomeHeaderCell.cellWithTableView(tableView: tableView)
+            cell.model = model as? HomeDayModel
+            return cell
+        }else{//年,yue
+            let cell = HomeMonthAndYearCell.cellWithTableView(tableView: tableView)
             return cell
         }
     }
@@ -101,6 +122,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y + scrollView.contentInset.top)
+        let y = scrollView.contentOffset.y + scrollView.contentInset.top
+        if y < 1000{
+            
+        }
     }
 }

@@ -3,12 +3,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="SimpleCost" customModuleProvider="target">
             <connections>
                 <outlet property="bottomView" destination="iIs-pW-q5v" id="u8d-5V-TLh"/>
+                <outlet property="monthLabel" destination="J6S-Ga-sEF" id="uCC-iw-j2a"/>
+                <outlet property="sumLabel" destination="X53-e5-76b" id="53b-rW-vmY"/>
                 <outlet property="tableView" destination="2IB-S6-yPh" id="K8i-sT-YUS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -39,18 +42,30 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mL-9m-NoH">
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6S-Ga-sEF">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6S-Ga-sEF">
                             <color key="backgroundColor" red="0.19107788311584606" green="0.27967256633431725" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="D99-Us-Pju"/>
+                                <constraint firstAttribute="width" secondItem="J6S-Ga-sEF" secondAttribute="height" multiplier="1:1" id="eWH-zL-8Mp"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X53-e5-76b" userLabel="sumLabel">
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="X53-e5-76b" firstAttribute="centerY" secondItem="8mL-9m-NoH" secondAttribute="centerY" id="8dV-qE-Ezk"/>
                         <constraint firstItem="J6S-Ga-sEF" firstAttribute="centerX" secondItem="8mL-9m-NoH" secondAttribute="centerX" id="JF8-bJ-LYG"/>
+                        <constraint firstItem="X53-e5-76b" firstAttribute="leading" secondItem="J6S-Ga-sEF" secondAttribute="trailing" constant="14" id="KyP-dF-5Nm"/>
                         <constraint firstItem="J6S-Ga-sEF" firstAttribute="centerY" secondItem="8mL-9m-NoH" secondAttribute="centerY" id="dgf-VJ-Rqj"/>
                         <constraint firstAttribute="height" constant="60" id="nhT-AE-8or"/>
+                        <constraint firstAttribute="trailing" secondItem="X53-e5-76b" secondAttribute="trailing" constant="14" id="w8X-iS-O0N"/>
                     </constraints>
                 </view>
             </subviews>

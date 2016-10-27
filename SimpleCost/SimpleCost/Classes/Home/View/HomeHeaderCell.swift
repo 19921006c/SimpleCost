@@ -13,7 +13,7 @@ class HomeHeaderCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     
-    var model: HomeModel?{
+    var model: HomeDayModel?{
         didSet{
             let timestamp = NSDate().timeIntervalSince1970
             let orderNumber = Int(timestamp / 60 / 60 / 24)
@@ -26,11 +26,8 @@ class HomeHeaderCell: UITableViewCell {
                 timeContent = timeStampToString(timeStamp: "\(timestamp)") + "日"
             }
             timeLabel.text = timeContent!
-            var sum: Double = 0
-            for costModel in (model?.costModelArray)! {
-                sum = sum + costModel.value!
-            }
-            costLabel.text = "支出 \(sum)"
+            
+            costLabel.text = "支出 \((model?.costSum)!)"
         }
     }
     private func timeStampToString(timeStamp: String)->String {

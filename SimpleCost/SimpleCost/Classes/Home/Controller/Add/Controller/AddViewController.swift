@@ -42,12 +42,17 @@ class AddViewController: BaseViewController, UITextFieldDelegate{
         commonDismiss()
     }
     @IBAction func enableBtnAction(_ sender: AnyObject) {
-        commonDismiss()
         let nsStr1 = textField.text! as NSString
         let value = floorToPlaces(value: nsStr1.doubleValue, places: 2)
-        let model = CostModel()
-        model.value = value
-        delegate?.finishAddData(costModel: model)
+        if value != 0 {
+            //查看是否是第一次使用app
+            HomeDayModel.modelArray(value: value)
+            let model = CostModel()
+            model.value = value
+            delegate?.finishAddData(costModel: model)
+            commonDismiss()
+        }
+        
     }
     
     func floorToPlaces(value:Double, places:Int) -> Double {
