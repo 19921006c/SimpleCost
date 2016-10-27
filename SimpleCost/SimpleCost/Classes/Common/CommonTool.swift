@@ -8,6 +8,13 @@
 
 import UIKit
 
+enum TimeType {
+    case Default
+    case Year
+    case Month
+    case Day
+}
+
 //MARK: 常用尺寸宏
 let kScreenBounds = UIScreen.main.bounds
 let kScreenWidth = kScreenBounds.width
@@ -26,5 +33,28 @@ class CommonTool: NSObject {
         }else{
             return false
         }
+    }
+    
+    class func timeStampToString(timeStamp: String, timeType: TimeType)->String {
+        
+        let string = NSString(string: timeStamp)
+        
+        let timeSta:TimeInterval = string.doubleValue
+        let dfmatter = DateFormatter()
+        let type: String!
+        if timeType == TimeType.Default{
+            type = ""
+        }else if timeType == TimeType.Year {
+            type = "yyyy"
+        }else if timeType == TimeType.Month{
+            type = "MM"
+        }else{
+            type = "dd"
+        }
+        dfmatter.dateFormat = type
+        
+        let date = NSDate(timeIntervalSince1970: timeSta)
+        
+        return dfmatter.string(from: date as Date)
     }
 }

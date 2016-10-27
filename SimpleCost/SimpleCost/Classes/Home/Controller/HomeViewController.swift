@@ -20,7 +20,7 @@ class HomeViewController: BaseViewController, AddViewControllerDelegate {
         super.viewDidLoad()
 
         tableView.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0)
-        modelArray = HomeDayModel.modelArryLoad()
+        modelArray = DataTool.modelArryLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(rightDown))
         
@@ -46,8 +46,6 @@ class HomeViewController: BaseViewController, AddViewControllerDelegate {
     //添加数据页点击确定后的回调
     func finishAddData(costModel: CostModel) {
         if modelArray.count == 0{
-            //如果第一次添加则创建数据
-            modelArray = HomeDayModel.modelArryLoad()
             //计算当天消费合计
             let model = modelArray.first as! HomeDayModel
             model.costSum = model.costSum! + costModel.value!

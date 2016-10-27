@@ -46,13 +46,13 @@ class AddViewController: BaseViewController, UITextFieldDelegate{
         let value = floorToPlaces(value: nsStr1.doubleValue, places: 2)
         if value != 0 {
             //查看是否是第一次使用app
-            HomeDayModel.modelArray(value: value)
+            DataTool.modelArray(value: value)
+            //
             let model = CostModel()
             model.value = value
             delegate?.finishAddData(costModel: model)
             commonDismiss()
         }
-        
     }
     
     func floorToPlaces(value:Double, places:Int) -> Double {

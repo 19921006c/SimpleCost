@@ -14,7 +14,10 @@ class HomeYearModel: NSObject, NSCoding {
     var time: Int?
     //数据队列中的次序
     var index: Int?
+    //
+    var costSum: Double = 0
     
+    var month = [HomeMonthModel]()
     func encode(with aCoder: NSCoder) {
         aCoder.encode(time, forKey: kTime)
         aCoder.encode(index, forKey: kIndex)
